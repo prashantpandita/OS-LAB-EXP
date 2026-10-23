@@ -1,0 +1,54 @@
+EXPERIMENT 01
+TITLE: INSTALL UBUNTU LINUX USING ORACLE VIRTUALBOX
+
+AIM:
+To install Oracle VirtualBox, create a virtual machine, and install Ubuntu Linux on it.
+
+REQUIREMENTS:
+1. A computer with a supported operating system.
+2. Oracle VirtualBox installer.
+3. Ubuntu Desktop ISO image.
+4. Internet connection and sufficient free disk space.
+
+PROCEDURE:
+1. Download Oracle VirtualBox from:
+   https://www.virtualbox.org/wiki/Downloads
+
+2. Install VirtualBox by running the downloaded installer and following
+   the installation wizard.
+
+3. Download the Ubuntu Desktop ISO image from:
+   https://ubuntu.com/download/desktop
+
+4. Open Oracle VirtualBox and click New.
+
+5. Enter the virtual machine name, for example: Ubuntu-Linux.
+   Select the downloaded Ubuntu ISO image if prompted.
+
+6. Configure the virtual machine. A possible starting configuration is:
+   - RAM: 4 GB, if the host computer has enough memory
+   - CPU: 2 virtual CPUs, if available
+   - Virtual disk: 25-30 GB or more
+
+7. Create the virtual machine and start it.
+
+8. Follow the Ubuntu installer instructions to choose language, keyboard,
+   network, and installation options.
+
+9. Complete installation and restart the virtual machine when prompted.
+
+10. If prompted to remove installation media, detach the ISO from the
+    virtual optical drive.
+
+11. Log in to Ubuntu and confirm that the desktop opens correctly.
+
+12. Capture screenshots of the process and save them in the screenshots
+    folder.
+
+PRECAUTION:
+Make sure the installation is performed on the virtual machine's virtual
+disk. Do not modify the host computer's physical disk partitions.
+
+RESULT:
+Fill this in after completing the experiment. If successful, state that
+Ubuntu Linux was installed and launched in Oracle VirtualBox.

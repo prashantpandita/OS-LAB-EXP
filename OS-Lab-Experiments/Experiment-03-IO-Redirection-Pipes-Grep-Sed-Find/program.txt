@@ -1,0 +1,144 @@
+EXPERIMENT 03
+TITLE: STUDY OF I/O REDIRECTION, PIPES, GREP, SED, AND FIND
+
+AIM:
+To study I/O redirection, pipes, and Linux utilities such as grep, sed,
+and find for file and text processing.
+
+START:
+Open Ubuntu Terminal with Ctrl + Alt + T.
+
+PART A: PREPARE SAMPLE FILES
+
+1. Create and enter a practice directory:
+       mkdir -p ~/exp3-practice
+       cd ~/exp3-practice
+
+2. Create a sample text file:
+       cat > students.txt <<'EOF'
+       Asha CSE 85
+       Ravi ECE 72
+       Neha CSE 91
+       Aman ME 68
+       Isha CSE 78
+       EOF
+
+3. Display the file:
+       cat students.txt
+
+PART B: INPUT/OUTPUT REDIRECTION
+
+4. Redirect output to a file:
+       ls > files.txt
+   Meaning: writes the output of ls to files.txt. If the file exists,
+   its previous contents are overwritten.
+
+5. Append output to a file:
+       date >> log.txt
+       date >> log.txt
+       cat log.txt
+   Meaning: >> adds output to the end of the file.
+
+6. Take input from a file:
+       sort < students.txt
+   Meaning: sort reads its input from students.txt.
+
+7. Redirect error output:
+       ls missing-file 2> errors.txt
+       cat errors.txt
+   Meaning: 2> redirects standard error (file descriptor 2) to a file.
+
+8. Redirect normal output and errors separately:
+       ls students.txt missing-file > output.txt 2> errors.txt
+       cat output.txt
+       cat errors.txt
+
+PART C: PIPES
+
+9. Count the lines in the sample file:
+       cat students.txt | wc -l
+
+10. Search for CSE entries and count them:
+        grep "CSE" students.txt | wc -l
+
+11. Sort the entries:
+        cat students.txt | sort
+
+12. Display only the first three lines after sorting:
+        sort students.txt | head -n 3
+
+Note: A pipe (|) sends the standard output of the command on its left
+to the standard input of the command on its right. For simple file
+processing, `sort students.txt` can be used without `cat`.
+
+PART D: GREP UTILITY
+
+13. Search for a word:
+        grep "CSE" students.txt
+
+14. Search without case sensitivity:
+        grep -i "cse" students.txt
+
+15. Display line numbers for matching lines:
+        grep -n "CSE" students.txt
+
+16. Display lines that do not contain CSE:
+        grep -v "CSE" students.txt
+
+17. Search for a pattern at the beginning of a line:
+        grep "^A" students.txt
+
+PART E: SED UTILITY
+
+18. Replace CSE with COMPUTER SCIENCE in output only:
+        sed 's/CSE/COMPUTER SCIENCE/g' students.txt
+
+19. Print only the first two lines:
+        sed -n '1,2p' students.txt
+
+20. Delete lines containing ECE from the displayed output:
+        sed '/ECE/d' students.txt
+
+21. Save modified output to a new file without changing the original:
+        sed 's/CSE/COMPUTER SCIENCE/g' students.txt > updated.txt
+        cat updated.txt
+
+Note: The examples above do not modify students.txt in place. The
+`sed -i` option can change a file directly, so use it carefully.
+
+PART F: FIND UTILITY
+
+22. Find a file by name under the current directory:
+        find . -name "students.txt"
+
+23. Find all text files under the current directory:
+        find . -type f -name "*.txt"
+
+24. Find directories under the current directory:
+        find . -type d
+
+25. Find files modified in the last day:
+        find . -type f -mtime -1
+
+PART G: REVIEW
+
+26. List the files created:
+        ls -l
+
+27. Display the updated text:
+        cat updated.txt
+
+28. Search the updated file:
+        grep "COMPUTER SCIENCE" updated.txt
+
+PRECAUTIONS:
+1. Remember that > overwrites a file, while >> appends to it.
+2. Use 2> for standard error; > alone redirects standard output.
+3. Ensure that file paths and patterns are correct.
+4. Avoid destructive find actions during practice.
+5. Use sed substitutions without -i until you are confident about the result.
+
+RESULT:
+Fill in after performing the experiment: I/O redirection, pipes, and
+grep, sed, and find were used for file and text processing, and their
+outputs were observed.

@@ -1,0 +1,184 @@
+EXPERIMENT 05
+Title: Shell Scripts Using Command-Line Arguments to Identify Files and Directories and Perform Filename Manipulation
+
+AIM
+To write and execute shell scripts that use command-line arguments to identify files and directories and perform filename manipulation.
+
+INTRODUCTION
+Command-line arguments are values supplied to a shell script when it is executed.
+- $0 represents the script name.
+- $1 represents the first argument.
+- $2 represents the second argument.
+- $# gives the number of arguments.
+- "$@" represents all arguments separately.
+
+PROGRAM 1: IDENTIFY A FILE OR DIRECTORY
+
+Save the following code as identify_path.sh:
+
+#!/bin/bash
+
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <file-or-directory>"
+    exit 1
+fi
+
+path=$1
+
+if [ -f "$path" ]; then
+    echo "$path is a regular file."
+elif [ -d "$path" ]; then
+    echo "$path is a directory."
+elif [ -e "$path" ]; then
+    echo "$path exists, but it is not a regular file or directory."
+else
+    echo "$path does not exist."
+fi
+
+HOW TO EXECUTE PROGRAM 1
+
+1. Create the file:
+   nano identify_path.sh
+2. Type or paste the code, save with Ctrl+O, press Enter, and exit with Ctrl+X.
+3. Make it executable:
+   chmod +x identify_path.sh
+4. Run it with a filename:
+   ./identify_path.sh notes.txt
+5. Run it with a directory:
+   ./identify_path.sh Documents
+
+EXAMPLE OUTPUT
+
+$ ./identify_path.sh notes.txt
+notes.txt is a regular file.
+
+$ ./identify_path.sh Documents
+Documents is a directory.
+
+The output depends on which paths exist in your system.
+
+PROGRAM 2: FILE NAME MANIPULATOR
+
+This script supports three operations: rename, copy, and change a filename extension.
+
+Save the following code as file_manipulator.sh:
+
+#!/bin/bash
+
+if [ "$#" -lt 3 ]; then
+    echo "Usage:"
+    echo "  $0 rename <source> <destination>"
+    echo "  $0 copy <source> <destination>"
+    echo "  $0 ext <filename> <new-extension>"
+    exit 1
+fi
+
+operation=$1
+source=$2
+destination=$3
+
+case "$operation" in
+    rename)
+        if [ ! -f "$source" ]; then
+            echo "Error: source file '$source' does not exist."
+            exit 1
+        fi
+
+        if [ -e "$destination" ]; then
+            echo "Error: destination '$destination' already exists."
+            exit 1
+        fi
+
+        mv -- "$source" "$destination" &&
+            echo "File renamed to '$destination'."
+        ;;
+
+    copy)
+        if [ ! -f "$source" ]; then
+            echo "Error: source file '$source' does not exist."
+            exit 1
+        fi
+
+        if [ -e "$destination" ]; then
+            echo "Error: destination '$destination' already exists."
+            exit 1
+        fi
+
+        cp -- "$source" "$destination" &&
+            echo "File copied to '$destination'."
+        ;;
+
+    ext)
+        if [ ! -f "$source" ]; then
+            echo "Error: file '$source' does not exist."
+            exit 1
+        fi
+
+        # Remove a leading dot from the requested extension.
+        new_extension=${destination#.}
+
+        if [ -z "$new_extension" ]; then
+            echo "Error: provide a new extension, such as md or txt."
+            exit 1
+        fi
+
+        # Keep the filename part before its final extension.
+        filename=${source##*/}
+        if [[ "$filename" == *.* && "$filename" != .* ]]; then
+            basename=${filename%.*}
+        else
+            basename=$filename
+        fi
+
+        target="${source%/*}/"
+        if [ "$target" = "$source/" ]; then
+            target=""
+        fi
+        target="${target}${basename}.${new_extension}"
+
+        if [ -e "$target" ]; then
+            echo "Error: destination '$target' already exists."
+            exit 1
+        fi
+
+        mv -- "$source" "$target" &&
+            echo "Extension changed: '$source' -> '$target'."
+        ;;
+
+    *)
+        echo "Unknown operation: $operation"
+        echo "Choose: rename, copy, or ext"
+        exit 1
+        ;;
+esac
+
+HOW TO EXECUTE PROGRAM 2
+
+1. Create the file:
+   nano file_manipulator.sh
+2. Type or paste the code, save with Ctrl+O, press Enter, and exit with Ctrl+X.
+3. Make it executable:
+   chmod +x file_manipulator.sh
+4. Create a test file:
+   echo "Operating Systems Lab" > notes.txt
+5. Rename a file:
+   ./file_manipulator.sh rename notes.txt lab_notes.txt
+6. Copy a file:
+   ./file_manipulator.sh copy lab_notes.txt backup.txt
+7. Change its extension:
+   ./file_manipulator.sh ext backup.txt md
+
+EXAMPLE OUTPUT
+
+File renamed to 'lab_notes.txt'.
+File copied to 'backup.txt'.
+Extension changed: 'backup.txt' -> 'backup.md'.
+
+IMPORTANT
+- Perform the tests in a separate practice directory.
+- The scripts refuse to overwrite an existing destination.
+- Changing an extension only changes the filename; it does not convert the file format.
+- Paths containing spaces should be placed in quotation marks when passed as arguments.
+
+CONCLUSION
+The experiment demonstrates how shell scripts accept command-line arguments, test whether paths are files or directories, and perform basic filename manipulation using mv and cp.

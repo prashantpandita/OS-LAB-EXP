@@ -1,0 +1,177 @@
+EXPERIMENT 02
+TITLE: EXECUTION OF BASIC SHELL COMMANDS IN UBUNTU LINUX
+
+AIM:
+To execute and understand basic shell commands in Ubuntu Linux.
+
+HOW TO START:
+1. Start Ubuntu Linux.
+2. Open Terminal using Ctrl + Alt + T.
+3. Type a command and press Enter.
+4. Replace example names with your own names when practising.
+
+A. DIRECTORY AND NAVIGATION COMMANDS
+
+1. pwd
+   Purpose: Displays the current working directory.
+   Example:
+       pwd
+
+2. ls
+   Purpose: Lists files and directories in the current directory.
+   Example:
+       ls
+
+3. ls -l
+   Purpose: Displays a detailed listing of files and directories.
+   Example:
+       ls -l
+
+4. cd
+   Purpose: Changes the current directory.
+   Examples:
+       cd ~
+       cd Documents
+       cd ..
+
+5. mkdir
+   Purpose: Creates a directory.
+   Example:
+       mkdir LabPractice
+
+6. rmdir
+   Purpose: Removes an empty directory.
+   Example:
+       rmdir EmptyFolder
+
+B. FILE-MANAGEMENT COMMANDS
+
+7. touch
+   Purpose: Creates an empty file if it does not exist.
+   Example:
+       touch sample.txt
+
+8. cp
+   Purpose: Copies a file.
+   Example:
+       cp sample.txt sample-copy.txt
+
+9. mv
+   Purpose: Moves or renames a file.
+   Example:
+       mv sample-copy.txt renamed.txt
+
+10. rm
+    Purpose: Removes a file.
+    Example:
+        rm renamed.txt
+    Caution: Check the filename before running this command.
+
+11. cat
+    Purpose: Displays the contents of a text file.
+    Example:
+        cat sample.txt
+
+C. TEXT AND OUTPUT COMMANDS
+
+12. echo
+    Purpose: Prints text to the terminal.
+    Example:
+        echo "Hello, Ubuntu Linux!"
+
+13. Write text to a file using redirection:
+        echo "This is my first Linux lab." > sample.txt
+    The > symbol replaces the file's existing contents.
+    Use >> to append text instead:
+        echo "This line is appended." >> sample.txt
+
+14. wc
+    Purpose: Counts lines, words, and bytes/characters.
+    Example:
+        wc sample.txt
+
+15. grep
+    Purpose: Searches a file for a matching word or pattern.
+    Example:
+        grep "Linux" sample.txt
+
+D. USER AND SYSTEM INFORMATION COMMANDS
+
+16. whoami
+    Purpose: Displays the current username.
+    Example:
+        whoami
+
+17. date
+    Purpose: Displays the system date and time.
+    Example:
+        date
+
+18. uname -a
+    Purpose: Displays kernel and system information.
+    Example:
+        uname -a
+
+19. df -h
+    Purpose: Shows filesystem disk-space usage in readable units.
+    Example:
+        df -h
+
+20. free -h
+    Purpose: Shows memory usage in readable units.
+    Example:
+        free -h
+
+21. history
+    Purpose: Displays commands recorded in shell history.
+    Example:
+        history
+
+22. clear
+    Purpose: Clears the visible terminal display.
+    Example:
+        clear
+
+23. man
+    Purpose: Opens the manual page for a command.
+    Example:
+        man ls
+    Press q to exit the manual page.
+
+24. cal
+    Purpose: Displays a calendar if the cal utility is installed.
+    Example:
+        cal
+    If the command is unavailable, skip it or use the package manager
+    according to your system's configuration.
+
+SAMPLE PRACTICE SESSION:
+
+    pwd
+    mkdir LabPractice
+    cd LabPractice
+    touch sample.txt
+    echo "Hello from Ubuntu Linux" > sample.txt
+    cat sample.txt
+    cp sample.txt copy.txt
+    ls -l
+    wc sample.txt
+    grep "Ubuntu" sample.txt
+    mv copy.txt renamed.txt
+    ls
+    rm renamed.txt
+    cd ..
+    rmdir LabPractice
+
+Note: Do not remove LabPractice until you have finished observing the
+outputs. The final rmdir command works only when the directory is empty.
+
+PRECAUTIONS:
+1. Type commands carefully and check spelling.
+2. Be careful when using rm, mv, and redirection (>).
+3. Do not use sudo unnecessarily.
+4. Some commands may not be installed by default on every Ubuntu version.
+
+RESULT:
+Fill in after performing the experiment: Basic shell commands were
+executed successfully and their outputs were observed.
