@@ -584,5 +584,4 @@ The `getpid()` function successfully displayed the child process ID, and the par
   <b>OPERATING SYSTEMS LABORATORY</b><br>
   <i>Learn • Code • Execute • Understand</i>
 </p>
-<img width="1280" height="960" alt="Code Screenshot" src="Screenshot%202026-11-01%20215548.png" />
-<img width="1280" height="960" alt="Terminal Output" src="Screenshot%202026-10-30%20104452.png" />
+
